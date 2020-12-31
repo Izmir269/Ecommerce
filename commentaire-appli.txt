@@ -1,0 +1,33 @@
+Je vai construire une application d'e-commerce avec une API -> Commerce.js
+Stripe pour le payement avec la carte de demo 4242 4242 4242 4242 
+Commerce.js envoie un mail à celui qui a commandé et le proprio...
+
+- Le shortcut pour un functionnal component c'est rafce
+
+- Dans commercejs.com voici les étapes :
+	+ Dns le projet à src on a créer un dossier lib pour les librairies puis un fichier commerce.js
+	+ Trouver la clé public : dans l'onglet Developer -> Settings
+	+ On va stocker la clé public de l'API dans un nouveau fichier .env à la racine du projet avec nom = clé copié
+	+ Dans commerce.js on fait : 
+		import Commerce from '@chec/commerce.js';
+
+		export const commerce = new Commerce(nom mis dans .env pour la clé, true);
+
+Habituellement pour créer une application ecommerce fonctionnelle on a besoin d'un full API backend pour les opérations CRUD,
+authentifications, vente. Tout ça est stocké dans l'instance commerce pour nous faciliter le backend. 
+
+Si on veut ajouter un produit on va dans l'onglet Products puis add a product. 
+Quand c'est un produit physique on clique l'option Shipping option
+Quand on laisse le SKU(id du produit) et la quantité à vide c'est automatisé
+Par défaut c'est activé aux US mais on peut ajouter d'autres zones : onglet Settings -> Shipping
+
+Liste des produits : const {data} = await commerce.products.list();
+Le panier : const cart = await commerce.cart.retrieve() => C'est dans un paramètre line_items
+
+Dans le dossier components le dossier Cart va servir à display quand on va cliquer sur le panier 
+CartItem pour montrer chaque produit dans le panier
+
+props filling c'est quand on passe des props à travers plusieurs plusieurs components avant d'atteindre le composent d'utilisation
+La solution est d'utiliser react-context 
+
+CustomTextField est là pour pouvoir faire communiquer react hook form avec material-ui
